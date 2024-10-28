@@ -12,26 +12,37 @@ import {
 } from 'react-native';
 import ToDoList from './ToDoList';
 import ToDoForm from './ToDoForm';
+import { useState } from 'react'; 
+import globalStyles from './styles';
 
 function App() {
+  const [tasks, setTasks] = useState([
+    'Do laundry',
+    'Go to gym',
+    'Walk dog'
+  ]);
+
+  function addTask(newTask) {
+    setTasks([...tasks, newTask]);
+  }
+
+  function deleteTask(index) {
+    setTasks(tasks.filter((task, i) => i !== index));
+  }
+
+
+
   return (
-    <SafeAreaView style={StyleSheet.container}>
-      <Text>This app is to be called the "Incredible Todo List App" By Matthew</Text>
+    <SafeAreaView style={globalStyles.container}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20 }}>
+        Incredible Todo List App: By Matthew
+      </Text>
       <ScrollView>
-        <ToDoList />
-        <ToDoForm />
+        <ToDoList tasks={tasks} deleteTask={deleteTask} />
+        <ToDoForm addTask={addTask} />
       </ScrollView>
-      
     </SafeAreaView>
   );
     
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },  
-});
 export default App;
