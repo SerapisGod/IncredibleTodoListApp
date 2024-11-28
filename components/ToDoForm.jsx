@@ -9,8 +9,7 @@ import {
     Button
   } from 'react-native';
 import { useState } from 'react';
-import globalStyles from './styles';
-
+import globalStyles from '../styles';
 
 function ToDoForm ({addTask}) {
   const [task, setTask] = useState('');

@@ -8,7 +8,7 @@ import {
     TextInput,
     Button
   } from 'react-native';
-import globalStyles from './styles';
+import globalStyles from '../styles';
 
 function ToDoList({tasks, deleteTask}) {
     return (
